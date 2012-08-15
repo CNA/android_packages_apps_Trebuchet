@@ -76,8 +76,7 @@
                     android:defaultValue="true" />
             </PreferenceCategory>
         </PreferenceScreen>
-
-        <!-- Drawer -->
+        
         <PreferenceScreen android:key="ui_drawer"
             android:title="@string/preferences_interface_drawer_title">
             <PreferenceCategory android:title="@string/preferences_interface_drawer_widgets_category">
@@ -99,17 +98,18 @@
             </PreferenceCategory>
         </PreferenceScreen>
 
-        <!-- Dock -->
+<!--
         <PreferenceScreen android:key="ui_dock"
             android:title="@string/preferences_interface_dock_title">
 
         </PreferenceScreen>
 
-        <!-- Icons -->
+
         <PreferenceScreen android:key="ui_icons"
             android:title="@string/preferences_interface_icons_title">
 
         </PreferenceScreen>
+-->
 
         <!-- General -->
         <PreferenceScreen android:key="ui_general"
@@ -120,7 +120,9 @@
 
     </PreferenceCategory>
 
-    <!-- Application -->
+<!--
     <PreferenceCategory android:title="@string/preferences_application_title">
     </PreferenceCategory>
+-->
+
 </PreferenceScreen>
