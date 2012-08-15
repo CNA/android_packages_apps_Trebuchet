@@ -122,8 +122,5 @@
 
     <!-- Application -->
     <PreferenceCategory android:title="@string/preferences_application_title">
-        <Preference android:key="application_version"
-            style="?android:preferenceInformationStyle"
-            android:summary="@string/application_copyright" />
     </PreferenceCategory>
 </PreferenceScreen>
