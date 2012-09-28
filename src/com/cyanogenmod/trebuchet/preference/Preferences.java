@@ -23,19 +23,38 @@ import android.preference.PreferenceActivity;
 
 import com.cyanogenmod.trebuchet.R;
 
-public class Preferences extends PreferenceActivity {
+public class Preferences extends PreferenceActivity
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = "Launcher.Preferences";
+
+    private SharedPreferences mPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
 
-        SharedPreferences prefs =
-            getSharedPreferences(PreferencesProvider.PREFERENCES_KEY, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean(PreferencesProvider.PREFERENCES_CHANGED, true);
-                editor.commit();
+        mPrefs = getSharedPreferences(PreferencesProvider.PREFERENCES_KEY,
+                Context.MODE_PRIVATE);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPrefs.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        mPrefs.unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
+    }
+
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        SharedPreferences.Editor editor = mPrefs.edit();
+        editor.putBoolean(PreferencesProvider.PREFERENCES_CHANGED, true);
+        editor.commit();
+    }
+
 }
